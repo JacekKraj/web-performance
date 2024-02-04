@@ -114,7 +114,7 @@ gulp.task('js-minified', () => {
 });
 
 gulp.task('images', () => {
-  return gulp.src([ src_assets_folder + 'images/**/*.+(png|jpg|jpeg|gif|svg|ico)' ], { since: gulp.lastRun('images') })
+  return gulp.src([ src_assets_folder + 'images/**/*.+(png|jpg|jpeg|gif|svg|ico|webp)' ], { since: gulp.lastRun('images') })
     .pipe(plumber())
     .pipe(gulp.dest(dist_assets_folder + 'images'))
     .pipe(browserSync.stream());
@@ -188,21 +188,21 @@ gulp.task(
   'build', 
   gulp.series(
     'clear', 
-    'html', /* replace the 'html' with 'html-minified' if you need minification */ 
+    'html-minified', /* replace the 'html' with 'html-minified' if you need minification */ 
     'sass', 
     'js', 
-    'js-copy', /* replace the 'js-copy' with 'js-minified' if you need minification */
+    'js-minified', /* replace the 'js-copy' with 'js-minified' if you need minification */
     'fonts', 
     'videos',
     'extra-files', 
     'images', 
-    /*'purgecss',*/
+    'purgecss',
     /*'generate-critical-css',*/
     /*'generate-service-worker',*/
   )
 );
 
-gulp.task('dev', gulp.series('html', 'sass', 'fonts', 'videos', 'extra-files', 'js', 'js-copy'));
+gulp.task('dev', gulp.series('html-minified', 'sass', 'fonts', 'videos', 'extra-files', 'js-minified', 'purgecss'));
 
 gulp.task('serve', () => {
   return browserSync.init({
@@ -216,7 +216,7 @@ gulp.task('serve', () => {
 
 gulp.task('watch', () => {
   const watchImages = [
-    src_assets_folder + 'images/**/*.+(png|jpg|jpeg|gif|svg|ico)'
+    src_assets_folder + 'images/**/*.+(png|jpg|jpeg|gif|svg|ico|webp)'
   ];
 
   const watch = [

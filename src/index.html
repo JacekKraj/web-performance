@@ -15,20 +15,22 @@
     <link rel="preconnect" href="//use.typekit.net" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://embed.tawk.to" /> 
+    <link rel="preconnect" href="https://youtube.com" />
 
     <link href="/assets/css/homework/app.css" rel="stylesheet">
+
     <link media="none" onload="if(media!='all')media='all'" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600" rel="stylesheet">
-
+    
     <link href="/favicon.ico" rel="icon" fetchpriority="low">
-
+    
     <script defer src="https://js.stripe.com/v3/"></script>
     
     <script defer src="//use.typekit.net/lna1ryl.js"></script>
-
+    
     <script defer  src="/assets/js/homework/vendor/jquery/dist/jquery.min.js"></script>
     <script defer data-main="/assets/js/homework/home" src="/assets/js/homework/vendor/requirejs/require.js"></script>
-
+    
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.querySelector(s),
@@ -36,9 +38,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.insertAdjacentElement('beforeend',j);
     })(window,document,'head','dataLayer','GTM-TGDSWZ8');</script>
     <!-- End Google Tag Manager -->
-
-
-  
+        
   </head>
   <body>
     <div class="overlay"></div>
@@ -92,7 +92,7 @@
             <div>
               <div class="item__category item__category--50 l-megamenu__cat"><a title="White papers" href="">White papers</a></div>
               <h2 class="headline-2">Some super interesting resource to download</h2>
-              <p class="small-text"><img src="/assets/images/homework/post.webp" class="l-megamenu__image" alt=""> Just download it and enjoy.
+              <p class="small-text"><img src="/assets/images/homework/post.webp" fetchpriority="low" class="l-megamenu__image" alt=""> Just download it and enjoy.
               </p>
               <p>
                 <a class="btn btn--bg-darkblue btn--border-blue" href="/" title="Download now: Ovum Report - Vodafone in-network call recording">Download now</a>
@@ -127,7 +127,7 @@
             <div>
               <div class="item__category item__category--79 l-megamenu__cat"><a title="eBooks" href="/">eBooks</a></div>
               <h2 class="headline-2">PCI DSS and the contact center</h2>
-              <p class="small-text"><img src="/assets/images/homework/news-example.webp" class="l-megamenu__image" alt=""> Some text is here so you are impressed and you will click the button below.
+              <p class="small-text"><img src="/assets/images/homework/news-example.webp" fetchpriority='low' class="l-megamenu__image" alt=""> Some text is here so you are impressed and you will click the button below.
               </p>
               <p>
                 <a class="btn btn--bg-darkblue btn--border-blue" href="/2" title="Download now">Download now</a>
@@ -147,7 +147,7 @@
             <div>
               <div class="item__category item__category--50 l-megamenu__cat"><a title="White papers" href="/">White papers</a></div>
               <h2 class="headline-2">Report about mobile payment gateways</h2>
-              <p class="small-text"><img src="/assets/images/homework/post2.webp" class="l-megamenu__image" alt=""> An MNO service that doesn&#39;t require a SIM change
+              <p class="small-text"><img src="/assets/images/homework/post2.webp" fetchpriority="low" class="l-megamenu__image" alt=""> An MNO service that doesn&#39;t require a SIM change
               </p>
               <p>
                 <a class="btn btn--bg-darkblue btn--border-blue" href="/" title="Download now">Download now</a>
@@ -180,8 +180,8 @@
         </div>
 
         <div class="home-banner__anim">
-           <img id="resizer" src="/assets/images/homework/anim/empty-block.png" alt="Empty block" />
-          <img id="shadow" src="/assets/images/homework/anim/shadow.webp" alt="Shadow" />
+           <img id="resizer" src="/assets/images/homework/anim/empty-block.png" alt="Empty block" fetchpriority="low" />
+          <img id="shadow" src="/assets/images/homework/anim/shadow.webp" alt="Shadow" fetchpriority="high" />
           <img id="rainbow" src="/assets/images/homework/anim/rainbow.webp" alt="Rainbow" />
           <img id="pc" src="/assets/images/homework/anim/pc.png" alt="PC" />
           <img id="social" src="/assets/images/homework/anim/social.png" alt="Social media" />
@@ -766,6 +766,5 @@
       })();
     </script>
     <!--End of Tawk.to Script-->
-
   </body>
 </html>

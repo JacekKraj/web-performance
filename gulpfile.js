@@ -36,6 +36,7 @@ const gulp                      = require('gulp'),
       sass                      = require('gulp-sass')(require('sass')),
       purgecss                  = require('gulp-purgecss'),
       gzip                      = require('gulp-gzip')
+      cleanCSS                  = require('gulp-clean-css')
 
       src_folder                = './src/',
       src_assets_folder         = src_folder + 'assets/',
@@ -77,6 +78,12 @@ gulp.task('purgecss', () => {
       }))
       .pipe(gulp.dest(dist_assets_folder + 'css'))
 })
+
+gulp.task('minify-css', () => {
+  return gulp.src(dist_assets_folder + 'css/**/*.css')
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(gulp.dest(dist_assets_folder + 'css'))
+});
 
 gulp.task('js', () => {
   return gulp.src([ src_assets_folder + 'js/**/*.js', '!' + src_assets_folder + 'js/homework/**/*.js' ], { since: gulp.lastRun('js') })
@@ -211,12 +218,13 @@ gulp.task(
     'extra-files', 
     'images', 
     'purgecss',
+    'minify-css'
     /*'generate-critical-css',*/
     /*'generate-service-worker',*/
   )
 );
 
-gulp.task('dev', gulp.series('html-minified', 'sass', 'fonts', 'videos', 'extra-files', 'js-minified', 'purgecss', ));
+gulp.task('dev', gulp.series('html-minified', 'sass', 'fonts', 'videos', 'extra-files', 'js-minified', 'purgecss', 'minify-css' ));
 
 gulp.task('serve', () => {
   return browserSync.init({

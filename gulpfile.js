@@ -211,13 +211,12 @@ gulp.task(
     'extra-files', 
     'images', 
     'purgecss',
-    'compress'
     /*'generate-critical-css',*/
     /*'generate-service-worker',*/
   )
 );
 
-gulp.task('dev', gulp.series('html-minified', 'sass', 'fonts', 'videos', 'extra-files', 'js-minified', 'purgecss', 'compress'));
+gulp.task('dev', gulp.series('html-minified', 'sass', 'fonts', 'videos', 'extra-files', 'js-minified', 'purgecss', ));
 
 gulp.task('serve', () => {
   return browserSync.init({

@@ -35,6 +35,7 @@ const gulp                      = require('gulp'),
       critical                  = require('critical'),
       sass                      = require('gulp-sass')(require('sass')),
       purgecss                  = require('gulp-purgecss'),
+      gzip                      = require('gulp-gzip')
 
       src_folder                = './src/',
       src_assets_folder         = src_folder + 'assets/',
@@ -112,6 +113,19 @@ gulp.task('js-minified', () => {
     .pipe(gulp.dest(dist_assets_folder + 'js/homework'))
     .pipe(browserSync.stream());
 });
+
+gulp.task('compress', () => {
+  return gulp.src([ 
+    src_assets_folder + 'js/homework/*.js', 
+    src_assets_folder + 'js/homework/components/*.js',
+    src_assets_folder + 'js/homework/vendor/*.js', 
+    src_assets_folder + 'js/homework/vendor/jquery/dist/*.js', 
+    src_assets_folder + 'js/homework/vendor/requirejs/*.js', 
+  ])
+  .pipe(gzip())
+  .pipe(gulp.dest(dist_assets_folder + 'js/homework'))
+});
+
 
 gulp.task('images', () => {
   return gulp.src([ src_assets_folder + 'images/**/*.+(png|jpg|jpeg|gif|svg|ico|webp)' ], { since: gulp.lastRun('images') })
@@ -197,12 +211,13 @@ gulp.task(
     'extra-files', 
     'images', 
     'purgecss',
+    'compress'
     /*'generate-critical-css',*/
     /*'generate-service-worker',*/
   )
 );
 
-gulp.task('dev', gulp.series('html-minified', 'sass', 'fonts', 'videos', 'extra-files', 'js-minified', 'purgecss'));
+gulp.task('dev', gulp.series('html-minified', 'sass', 'fonts', 'videos', 'extra-files', 'js-minified', 'purgecss', 'compress'));
 
 gulp.task('serve', () => {
   return browserSync.init({

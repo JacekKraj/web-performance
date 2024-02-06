@@ -20,7 +20,20 @@
     <link href="/assets/css/homework/app.css" rel="stylesheet">
 
     <link media="none" onload="if(media!='all')media='all'" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600" rel="stylesheet">
+
+    <link
+    rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600&display=swap"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600&display=swap"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </noscript>
     
     <link href="/favicon.ico" rel="icon" fetchpriority="low">
     

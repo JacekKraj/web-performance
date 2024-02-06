@@ -37,6 +37,7 @@ const gulp                      = require('gulp'),
       purgecss                  = require('gulp-purgecss'),
       gzip                      = require('gulp-gzip')
       cleanCSS                  = require('gulp-clean-css')
+      dedupe                    = require('gulp-dedupe')
 
       src_folder                = './src/',
       src_assets_folder         = src_folder + 'assets/',
@@ -95,6 +96,7 @@ gulp.task('js', () => {
       .pipe(babel({
         presets: [ '@babel/env' ]
       }))
+      .pipe(dedupe())
       .pipe(concat('all.js'))
       .pipe(uglify())
     .pipe(sourcemaps.write('.'))
